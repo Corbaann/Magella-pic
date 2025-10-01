@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border 0.3s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #009688; /* Teal accent */
+      box-shadow: 0 0 5px rgba(0, 150, 136, 0.3);
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #009688; /* Teal */
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: background 0.3s;
+    }
+    .submit-btn:hover {
+      background-color: #00796b;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form id="contact-form">
+      <label for="name">Name *</label>
+      <input type="text" id="name" required placeholder="Your full name" />
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" required placeholder="your@email.com" />
+
+      <label for="message">Message *</label>
+      <textarea id="message" required rows="5" placeholder="Tell me about your project..."></textarea>
+
+      <button type="submit" class="submit-btn">Send Inquiry</button>
+    </form>
+  </div>
+
+  <!-- EmailJS Script -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    // Initialize EmailJS with YOUR User ID
+    emailjs.init("YOUR_USER_ID"); // ← REPLACE WITH YOUR EMAILJS USER ID
+  </script>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent page reload
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if (!name || !email || !message) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Send email using EmailJS
+      emailjs.send(
+        "YOUR_SERVICE_ID",     // ← REPLACE WITH YOUR SERVICE ID
+        "YOUR_TEMPLATE_ID",    // ← REPLACE WITH YOUR TEMPLATE ID
+        {
+          from_name: name,
+          reply_to: email,
+          message: message
+        }
+      )
+      .then(function(response) {
+        alert('✅ Thank you! Your message was sent successfully.');
+        document.getElementById('contact-form').reset();
+      }, function(error) {
+        alert('❌ Failed to send. Please try again or contact us directly.');
+        console.log('FAILED...', error);
+      });
+    });
+  </script>
+</body>
+</html>
