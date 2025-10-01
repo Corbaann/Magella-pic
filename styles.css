@@ -47,15 +47,15 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.5rem; /* Increased from 2.5rem */
             font-weight: 700;
             color: var(--accent-color);
             text-decoration: none;
             transition: transform 0.3s ease;
         }
-
+       
+       
         .logo:hover {
             transform: scale(1.05);
         }
@@ -111,7 +111,7 @@
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                        url('https://picsum.photos/seed/hero/1920/1080.jpg') center/cover;
+                        url('pics/19261.jpg') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -480,11 +480,12 @@
         }
 
         /* Success Message */
-        .success-message {
+       
+ .success-message {
             position: fixed;
             top: 100px;
             right: -400px;
-            background: #4CAF50;
+            background: #41c141;
             color: white;
             padding: 1rem 2rem;
             border-radius: 8px;
@@ -492,7 +493,6 @@
             transition: right 0.3s ease;
             z-index: 2000;
         }
-
         .success-message.show {
             right: 20px;
         }
