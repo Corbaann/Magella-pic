@@ -42,7 +42,7 @@
       // Send email using EmailJS
       emailjs.send(
         "service_yyysajp",     // ← REPLACE WITH YOUR SERVICE ID
-        "template_k9qw7w7",    // ← REPLACE WITH YOUR TEMPLATE ID
+        "template_9nzggyy",    // ← REPLACE WITH YOUR TEMPLATE ID
         {
           from_name: name,
           reply_to: email,
